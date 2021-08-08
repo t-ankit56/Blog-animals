@@ -1,0 +1,55 @@
+{% include 'header.html' %}
+
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('static/assets/img/login-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>Log In</h1>
+                            <span class="subheading">Welcome Back.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="col-lg-8 col-md-10 mx-auto">
+                            {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                    <p class=flashes>
+                                        {% for message in messages %}
+                                            <p style="color: red;">{{ message }}</p>
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
+                            {% endwith %}
+                            <form method="POST" action="/login" novalidate>
+                                {{ form.csrf_token }}
+                                <div>{{ form.email.label }}:</div>
+                                <div> {{ form.email() }}
+                                    {% for err in form.email.errors %}
+                                    <br><span style="color: red; font-size: 80%;">{{ err }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div>{{ form.password.label }}: </div>
+                                <div>{{ form.password() }}
+                                    {% for err in form.password.errors %}
+                                    <br><span style="color: red; font-size: 80%;">{{ err }}</span>
+                                    {% endfor %}
+                                </div>
+                                <br>
+                                <div>{{ form.submit }}</div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+{% include 'footer.html' %}
+    </body>
+</html>
