@@ -21,7 +21,7 @@ load_dotenv()  # take environment variables from .env.
 
 Base = declarative_base()
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL1")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 db = SQLAlchemy(app)
@@ -75,7 +75,7 @@ class Comments(db.Model, Base):
     date_time = db.Column(db.String(), nullable=False)
 
 
-# db.create_all()
+db.create_all()
 
 
 @login_manager.user_loader
