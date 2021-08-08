@@ -75,7 +75,7 @@ class Comments(db.Model, Base):
     date_time = db.Column(db.String(), nullable=False)
 
 
-db.create_all()
+# db.create_all()
 
 
 @login_manager.user_loader
